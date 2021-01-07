@@ -199,8 +199,7 @@ Aqui un ejemplo con el cantón Quito.
     ## projected CRS:  WGS 84 / UTM zone 17S
 
 ![Mapa de unidades parroquias urbanas y parroquias no urbanas para el
-cantón
-Quito](C:\\dd\\GOOGLE~1\\Mortali\\COVID_EC\\docs\\INDEX_~1/figure-gfm/unnamed-chunk-4-1.png)
+cantón Quito](emortali_ec_files/figure-gfm/unnamed-chunk-4-1.png)
 
 # Aggregación de datos
 
@@ -218,14 +217,14 @@ primero y en mayor magnitud fue afectada la costa, donde parece haber
 “iniciado” la pandemia, en menor magnitud la sierra y la región
 amazónica.
 
-![](C:\\dd\\GOOGLE~1\\Mortali\\COVID_EC\\docs\\INDEX_~1/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](emortali_ec_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 A nivel de exceso “relativo” (p-score) podemos observar que las
 provincias llegaron a un exceso “máximo” hasta el mes de agosto y
 septiembre, con una baja de las muertes excendentes despues de estos
 meses.
 
-![](C:\\dd\\GOOGLE~1\\Mortali\\COVID_EC\\docs\\INDEX_~1/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](emortali_ec_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 En el mes de diciembre, los niveles de exceso de mortalidad pueden ser
 mas reducidos, sin embargo, *las declaraciones de defunción tienden a
@@ -240,7 +239,7 @@ una idea a la difusión e la pandemia mes a mes:
 O observado la evolución por provincias (Guayas a la izquierda), dentro
 de un cantón (Quito a la derecha).
 
-![](C:\\dd\\GOOGLE~1\\Mortali\\COVID_EC\\docs\\INDEX_~1/figure-gfm/unnamed-chunk-7-1.gif)<!-- -->
+![](emortali_ec_files/figure-gfm/unnamed-chunk-7-1.gif)<!-- -->
 
 Se podría realizar un ajuste por población proyectada, de las muertes de
 periodo de referencia, para obtener comparaciones mas precisas con el
