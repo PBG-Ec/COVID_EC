@@ -98,8 +98,8 @@ Los datos del clasificador 2019 (“CODIFICACIÓN\_2019.xlsx” descargado
 [ahí](https://www.ecuadorencifras.gob.ec/documentos/web-inec/Cartografia/Clasificador_Geografico/CLASIFICADOR_GEOGRAFICO_ESTADISTICO_2019.zip)
 ) incluyen las parroquias urbanas. Las parroquias urbanas son
 subdivisiones de las Parroquias Cabeceras Cantonales (PCC). Sin embargo,
-oficialmente la geografía de las “sub” unidades urbanas no están siempre
-definidas geograficamente.
+oficialmente la geografía de las sub-unidades urbanas no están siempre
+geograficamente definidas.
 
 | pro\_n | pro   | can\_n | can    | par\_n | par                 | par\_n\_o | par\_o |
 | :----- | :---- | :----- | :----- | :----- | :------------------ | :-------- | :----- |
