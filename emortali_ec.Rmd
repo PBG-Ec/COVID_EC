@@ -1,5 +1,10 @@
 ---
 title: "Exceso de mortalidad en Ecuador"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "PBG"
 date: "31/12/2020"
 output:
@@ -11,8 +16,6 @@ knitr::opts_chunk$set(echo = T,warning = F,message = F)
 pks<-c("knitr","httr","stringr","readxl","foreign","tidyverse","sf","tmap",
        "viridis")
 lapply(pks,require,character.only=T)
-
-setwd("C:/DD/Google Drive/Mortali/")
 uac <- function(text) { #Unaccent Shit 
   text <- gsub("\\s+"," ",text)
   text <- tolower(iconv(text,"UTF-8", "ASCII//TRANSLIT"))
