@@ -25,7 +25,7 @@ uac <- function(text) { #Unaccent
 } #unaccent stuff
 ```
 
-Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas, de defunciones y elementos geográficos en el Ecuador. También aporta unos elementos de reflexión sobre les limitaciones para estimar el impacto de la pandemia con este método. También se encuentra en [este](https://github.com/PBG-Ec/COVID_EC) repositorio el código de análisis, realizado con R & Rmarkdown  (cran-R 4.0.2 y Rstudio 1.3).  
+Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas: defunciones y elementos geográficos. También aporta unos elementos de reflexión sobre les limitaciones para estimar el impacto de la pandemia con este método. Se encuentra en [este](https://github.com/PBG-Ec/COVID_EC) repositorio el código/datos de análisis, usando R & Rmarkdown  (cran-R 4.0.2 y Rstudio 1.3).  
 Esta en parte basado sobre el excelente material publicado de Roser et al.[1] [ahí](https://ourworldindata.org/excess-mortality-covid).  
 
 
@@ -444,7 +444,7 @@ for(i in 2:12){
 new_gif
 ```
 
-Se podría realizar un ajuste por población proyectada, de las tasas de muertes de periodo de referencia, para obtener comparaciones mas precisas con tasas del periodo 2020...
+Se podría realizar un ajuste por población proyectada, en vista de comparar tasas de excesos de muertes de periodo de referencia, y obtener comparaciones mas precisas comparando con el  periodo 2020-2021...
 
 
 ```{r, include=T,echo=F}
