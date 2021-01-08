@@ -1,9 +1,15 @@
 ---
 title: "Exceso de mortalidad en Ecuador"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "PBG"
 date: "31/12/2020"
-output:
-  github_document
+output: html_document
+#  github_document:
+#    pandoc_args: --webtex=https://ibm.codecogs.com/png.latex?
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +17,7 @@ knitr::opts_chunk$set(echo = T,warning = F,message = F)
 pks<-c("knitr","httr","stringr","readxl","foreign","tidyverse","sf","tmap",
        "viridis")
 lapply(pks,require,character.only=T)
-uac <- function(text) { #Unaccent Shit 
+uac <- function(text) { #Unaccent 
   text <- gsub("\\s+"," ",text)
   text <- tolower(iconv(text,"UTF-8", "ASCII//TRANSLIT"))
   text <- gsub("\\(.*\\)|['`^~\"]|[^[:alnum:][:space:]]","", text)
@@ -19,7 +25,7 @@ uac <- function(text) { #Unaccent Shit
 } #unaccent stuff
 ```
 
-Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas, de defunciones y elementos geográficos en el Ecuador. También aporta unos elementos de reflexión sobre les limitaciones para estimar el impacto de la pandemia con este método. También se encuentra en este repositorio el código de análisis, realizado con Rmardown  (cran-R 4.0.2 y Rstudio 1.3).  
+Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas, de defunciones y elementos geográficos en el Ecuador. También aporta unos elementos de reflexión sobre les limitaciones para estimar el impacto de la pandemia con este método. También se encuentra en [este](https://github.com/PBG-Ec/COVID_EC) repositorio el código de análisis, realizado con R & Rmarkdown  (cran-R 4.0.2 y Rstudio 1.3).  
 Esta en parte basado sobre el excelente material publicado de Roser et al.[1] [ahí](https://ourworldindata.org/excess-mortality-covid).  
 
 
@@ -93,7 +99,7 @@ dpa<-rbind(dpa,tp)
 knitr::kable(head(dpa[,c(1:6,10,11)]), "simple")
 ```
 
-## Unión con defuncción 2020
+## Defuncciones 2020
 
 Las bases publicadas de defunción se unificaron siguiendo tres etapas:  
 - nombres de cantones (manual),
@@ -106,7 +112,7 @@ Finalmente, para algunos casos, los nombres de las parroquias urbanas son homón
 
 
 ```{r include=T,echo=F}
-dd<-read_xlsx("Defunciones_Generales_2020_act_27_DIC.xlsx")
+dd<-read_xlsx("Defunciones_Generales_2020_act_03_ENE_2021.xlsx")
 #rename cols
 names(dd)<-c("zon","pro","can","par","fec","mes","dia")
 
@@ -248,21 +254,21 @@ Se nota aquí que partes no urbanas de las PCCs faltan en algunos casos al reali
 
 # Información geográfica  
 
-Como mencionado anteriormente, los datos de división politico administrativa a nivel de parroquias estan definidos geograficamente, sin embargo no existe oficialmente delimitaciones geográficas de parroquias urbanas.
+Como mencionado anteriormente, los datos de división político administrativa a nivel de parroquias están definidos geograficamente, sin embargo no existe oficialmente delimitaciones geográficas de parroquias urbanas.
 
 Juntando información publicada por municipios, estudios geográficos locales y codificación existente de "zonas" del INEC se realizo una codificación aproximada en base a las unidades de "zonas" urbanas definidas por el INEC, que en muchos casos corresponden en extensión a las definidas por los municipios.
-Un ejemplo aquí entre las parroquias reportadas en la pagina wikipedia sobre Quito (https://es.wikipedia.org/wiki/Quito) al a izquierda y las divisiones de grupos de zonas del INEC a la derecha. 
+Un ejemplo aquí entre las parroquias reportadas en la página wikipedia sobre Quito (https://es.wikipedia.org/wiki/Quito) al a izquierda y las divisiones de grupos de zonas del INEC a la derecha. 
 
 ```{r image, include=T,echo=F}
 include_graphics(c("quito_purb_INEC_Wiki.png"))
 ```
 
-Aquí el área en blanco, corresponde a las extensiones de la Parroquia "Quito" que no cubren las parroquias urbanas. La correspondencia de códigos se encuentra en el archivo dpa_2019_parrURB_fin.xlsx en github. 
+Aquí el área en negro (derecha), corresponde a las extensiones de la Parroquia "Quito" que no cubren las parroquias urbanas y deberían tener registros en la base 2020. La correspondencia de códigos se encuentra en el archivo dpa_2019_parrURB_fin.xlsx en github. 
 
 Uniendo estas entidades geográficas "urbanas" se obtienen mapas tanto a nivel de parroquias como de "ciudades" definidas por parroquias urbanas. 
-Aqui un ejemplo con el cantón Quito.
+Aquí un ejemplo con el cantón Quito.
 
-```{r include=T,echo=F,fig.cap = "Mapa de unidades parroquias urbanas y parroquias no urbanas para el  cantón Quito"}
+```{r include=T,echo=F,warning = F,message = F,fig.width = 10}
 #Geografical merge... with urb parr#############################################
 ######Build Urb par with selected zon from dpa 
 # gdbdir<-"GEODATABASE2014.gdb"
@@ -311,8 +317,8 @@ bbx<-st_bbox(p15[p15$DPA_CANTON=="1701",]) # bbx[2]<-9745000
 tmap_options(max.categories = 66)
 #tmap_mode("view")
 tm_shape(p15ur[p15ur$DPA_CANTON=="1701",],bbox = bbx) +
-  tm_polygons("DPA_PARROQ",colorNA = NULL,lwd=NA, legend.show = FALSE)  +
-  tm_style("cobalt")
+    tm_polygons("DPA_PARROQ",colorNA = NULL,lwd=NA, legend.show = FALSE)  +
+    tm_style("cobalt",bg.color="#0A1137",outer.bg.color="#0A1137",frame=F)
 ```
 
 
