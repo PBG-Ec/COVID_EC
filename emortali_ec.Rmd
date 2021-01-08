@@ -310,8 +310,8 @@ Aquí un ejemplo con el cantón Quito.
 # p15ur<-rbind(tp,z14) #Join both without overlapping
 # st_write(p15, "./gis/p15.shp")
 # st_write(p15ur, "./gis/p15ur.shp")
-p15 <- sf::st_read("./gis/p15.shp")
-p15ur <- sf::st_read("./gis/p15ur.shp")
+p15 <- sf::st_read("./gis/p15.shp",quiet = T)
+p15ur <- sf::st_read("./gis/p15ur.shp",quiet = T)
 
 bbx<-st_bbox(p15[p15$DPA_CANTON=="1701",]) # bbx[2]<-9745000
 tmap_options(max.categories = 66)
@@ -326,9 +326,9 @@ tm_shape(p15ur[p15ur$DPA_CANTON=="1701",],bbox = bbx) +
 
 Solo falta unificar la  información de defunción a la resolución deseada y realizar el cálculo de exceso de mortalidad por entidades reportadas. 
 
-Aparecen varios casos particulares el en calculo de exceso de mortalidad donde: 
-- no existen muertes en la entidad en los datos históricos o en 2020,
-- el exceso por encima de 200 % fue acortado como máximo a 200 %.
+Aparecen varios casos particulares el en calculo de exceso de mortalidad donde:  
+-  no existen muertes en la entidad en los datos históricos o en 2020,
+-  el exceso por encima de 200 % fue acortado como máximo a 200 %.  
 
 
 ## Resumen de exceso de mortalidad por  provincias / parroquias 
@@ -414,8 +414,7 @@ ggplot(data = z_mes_prov, aes(y=mes, x=nn,fill=log(nn)))+
 
 ```
 
-
-A nivel de exceso "relativo" (p-score) podemos observar que las provincias llegaron a un exceso "máximo" hasta el mes de agosto y septiembre, con una baja de las muertes excendentes despues de estos meses.
+A nivel de exceso "relativo" (p-score) podemos observar que las provincias llegaron a un exceso "máximo" hasta el mes de agosto y septiembre, con una baja de las muertes excedentes después de estos meses.
 
 ```{r, include=T,echo=F,fig.width = 10}
 ggplot(data = z_mes_prov, aes(factor(time),factor(pro), fill=factor(sm2)))+
@@ -425,14 +424,14 @@ ggplot(data = z_mes_prov, aes(factor(time),factor(pro), fill=factor(sm2)))+
   dark_theme_minimal() 
 ```
 
-En el mes de diciembre, los niveles de exceso de mortalidad pueden ser mas reducidos, sin embargo, *las declaraciones de defunción tienden a ser incompletas para las ultimas fechas reportadas*, con declaraciones para el último mes ocurriendo los meses siguientes.
+En el mes de diciembre, los niveles de exceso de mortalidad pueden ser más reducidos, sin embargo, *las declaraciones de defunción tienden a ser incompletas en las últimas fechas reportadas*, con declaraciones para el último mes ocurriendo los meses siguientes.
 
 
-Con la información compilada, mapas nacionales a nivel de parroquias dan una idea a la difusión e la pandemia mes a mes:
+Con la información compilada, los mapas de exceso de mortalidad dan una idea de la difusión de la pandemia mes a mes:
 
 ![](p15sem.gif)
 
-O observado la evolución por provincias (Guayas a la izquierda),  dentro de un cantón (Quito a la derecha).
+U observado la evolución por provincias (Guayas a la izquierda), o dentro de un cantón (Quito a la derecha).
 
 ```{r include=T,echo=F}
 a_mgif <- magick::image_read("p15umes_GUY.gif")
@@ -445,7 +444,7 @@ for(i in 2:12){
 new_gif
 ```
 
-Se podría realizar un ajuste por población proyectada, de las muertes de periodo de referencia, para obtener comparaciones mas precisas con el periodo 2020...
+Se podría realizar un ajuste por población proyectada, de las tasas de muertes de periodo de referencia, para obtener comparaciones mas precisas con tasas del periodo 2020...
 
 
 ```{r, include=T,echo=F}
