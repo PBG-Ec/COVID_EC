@@ -25,20 +25,22 @@ uac <- function(text) { #Unaccent
 } #unaccent stuff
 ```
 
-Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas: defunciones y elementos geográficos. También aporta unos elementos de reflexión sobre les limitaciones para estimar el impacto de la pandemia con este método. Se encuentra en [este](https://github.com/PBG-Ec/COVID_EC) repositorio el código/datos de análisis, usando R & Rmarkdown  (cran-R 4.0.2 y Rstudio 1.3).  
-Esta en parte basado sobre el excelente material publicado de Roser et al.[1] [ahí](https://ourworldindata.org/excess-mortality-covid).  
+Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas: defunciones y elementos geográficos. También aporta unos elementos de reflexión sobre las limitaciones para estimar el impacto de la pandemia con este método. Se encuentra en [este](https://github.com/PBG-Ec/COVID_EC) repositorio el código/datos de análisis, usando R & Rmarkdown  (cran-R 4.0.2 y Rstudio 1.3).  
+Esta en parte basado sobre el excelente material publicado de Roser et al. [1](https://ourworldindata.org/excess-mortality-covid).  
 
 
 
-Fuentes de datos: 
-
+Fuentes de datos:  
 _(1) Informaciones de defunciones generales 2016-2019 publicadas por el INEC: los datos se encuentran_ 
 [ahí](https://www.ecuadorencifras.gob.ec/defunciones-generales-2019/) y [aca](https://www.ecuadorencifras.gob.ec/nacimientos-y-defunciones-informacion-historica/).*  
 _(2) Informaciones de defunciones 2020 publicadas por el registro civil se encuentran actualizadas_ [ahí](https://www.registrocivil.gob.ec/cifrasdef/)  
 _(3) Datos geográficos empleados para realizar mapas se encuentran en el repositorio del INEC_ [ahí](https://www.ecuadorencifras.gob.ec/geoportal/) _y bases del clasificador de divisiones político administrativas_ [acá](https://www.ecuadorencifras.gob.ec/clasificador-geografico-estadistico-dpa/) **  
 
-*La información mas completa se encuentra en formato .sav, con etiquetas de las variables  
-**El sitio se encuentra actualmente en mantenimiento (al martes de 31 de diciembre) intente: [acá](https://www.ecuadorencifras.gob.ec/documentos/web-inec/Cartografia/Clasificador_Geografico/CLASIFICADOR_GEOGRAFICO_ESTADISTICO_2019.zip)  
+_*La información mas completa se encuentra en formato .sav, con etiquetas de las variables_  
+_**El sitio se encuentra actualmente en mantenimiento (al martes de 31 de diciembre) intente: [acá](https://www.ecuadorencifras.gob.ec/documentos/web-inec/Cartografia/Clasificador_Geografico/CLASIFICADOR_GEOGRAFICO_ESTADISTICO_2019.zip)_  
+
+<font size="2"> _*Póngase en contacto si encuentra algo extraño y/o interesante. Abra un problema en Github o escriba a ldsfelipe [aroba] gmail.com ¡Gracias!*_</font>  
+
 
 # 'Exceso de mortalidad’ Que es ? Porque medirlo ? Como se mide ? 
 
@@ -62,7 +64,7 @@ La información actualizada de defunciones presenta dos problemas:
 
 # Codificación de parroquias para comparación inter-anual
 
-Comparando les bases de datos de 2020 con la referencia oficial de DPA (clasificador estadístico 2019) podemos unificar cadenas de texto original con las designación del registro civil (comparación aproximada de cadenas de texto).
+Comparando las bases de datos de 2020 con la referencia oficial de DPA (clasificador estadístico 2019) podemos unificar cadenas de texto original con las designación del registro civil (comparación aproximada de cadenas de texto).
 Para evitar los nombres duplicados, se realizan las comparaciones dentro de cada cantón (después de depuración de estas cadenas de texto).  
 Aún así, surgen problemas de empate cuando las parroquias contienen parroquias urbanas, y tienen una parroquia urbana con el mismo nombre que la parroquia "cabecera de cantón" (más a continuación). 
 
@@ -99,7 +101,7 @@ dpa<-rbind(dpa,tp)
 knitr::kable(head(dpa[,c(1:6,10,11)]), "simple")
 ```
 
-## Defuncciones 2020
+## Defunciones 2020
 
 Las bases publicadas de defunción se unificaron siguiendo tres etapas:  
 - nombres de cantones (manual),
@@ -250,7 +252,7 @@ knitr::kable(head(mht[order(mht$par_n),c("par_n","pao_n","anio_nac","fec")]), "s
 
 ```
 
-Se nota aquí que partes no urbanas de las PCCs faltan en algunos casos al realizar la unión entre defunción 2020 y datos históricos cuando los nombres son sinónimos por el problema mencionado anteriormente.
+Se nota aquí que partes no urbanas de las PCCs faltan en algunos casos al realizar la unión entre defunción 2020 y datos históricos cuando los nombres son sinónimos.
 
 # Información geográfica  
 

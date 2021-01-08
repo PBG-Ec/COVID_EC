@@ -379,14 +379,15 @@ summary {
 </div>
 
 
-<p>Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas: defunciones y elementos geográficos. También aporta unos elementos de reflexión sobre les limitaciones para estimar el impacto de la pandemia con este método. Se encuentra en <a href="https://github.com/PBG-Ec/COVID_EC">este</a> repositorio el código/datos de análisis, usando R &amp; Rmarkdown (cran-R 4.0.2 y Rstudio 1.3).<br />
-Esta en parte basado sobre el excelente material publicado de Roser et al.[1] <a href="https://ourworldindata.org/excess-mortality-covid">ahí</a>.</p>
-<p>Fuentes de datos:</p>
-<p><em>(1) Informaciones de defunciones generales 2016-2019 publicadas por el INEC: los datos se encuentran</em> <a href="https://www.ecuadorencifras.gob.ec/defunciones-generales-2019/">ahí</a> y <a href="https://www.ecuadorencifras.gob.ec/nacimientos-y-defunciones-informacion-historica/">aca</a>.*<br />
+<p>Este análisis busca explorar el exceso de mortalidad como aproximación de medición de la pandemia de COVID 19 en el Ecuador. Se basa en datos de fuentes públicas: defunciones y elementos geográficos. También aporta unos elementos de reflexión sobre las limitaciones para estimar el impacto de la pandemia con este método. Se encuentra en <a href="https://github.com/PBG-Ec/COVID_EC">este</a> repositorio el código/datos de análisis, usando R &amp; Rmarkdown (cran-R 4.0.2 y Rstudio 1.3).<br />
+Esta en parte basado sobre el excelente material publicado de Roser et al.<a href="https://ourworldindata.org/excess-mortality-covid">1</a>.</p>
+<p>Fuentes de datos:<br />
+<em>(1) Informaciones de defunciones generales 2016-2019 publicadas por el INEC: los datos se encuentran</em> <a href="https://www.ecuadorencifras.gob.ec/defunciones-generales-2019/">ahí</a> y <a href="https://www.ecuadorencifras.gob.ec/nacimientos-y-defunciones-informacion-historica/">aca</a>.*<br />
 <em>(2) Informaciones de defunciones 2020 publicadas por el registro civil se encuentran actualizadas</em> <a href="https://www.registrocivil.gob.ec/cifrasdef/">ahí</a><br />
 <em>(3) Datos geográficos empleados para realizar mapas se encuentran en el repositorio del INEC</em> <a href="https://www.ecuadorencifras.gob.ec/geoportal/">ahí</a> <em>y bases del clasificador de divisiones político administrativas</em> <a href="https://www.ecuadorencifras.gob.ec/clasificador-geografico-estadistico-dpa/">acá</a> **</p>
-<p>*La información mas completa se encuentra en formato .sav, con etiquetas de las variables<br />
-**El sitio se encuentra actualmente en mantenimiento (al martes de 31 de diciembre) intente: <a href="https://www.ecuadorencifras.gob.ec/documentos/web-inec/Cartografia/Clasificador_Geografico/CLASIFICADOR_GEOGRAFICO_ESTADISTICO_2019.zip">acá</a></p>
+<p>_*La información mas completa se encuentra en formato .sav, con etiquetas de las variables_<br />
+_**El sitio se encuentra actualmente en mantenimiento (al martes de 31 de diciembre) intente: <a href="https://www.ecuadorencifras.gob.ec/documentos/web-inec/Cartografia/Clasificador_Geografico/CLASIFICADOR_GEOGRAFICO_ESTADISTICO_2019.zip">acá</a>_</p>
+<p><font size="2"> <em><em>Póngase en contacto si encuentra algo extraño y/o interesante. Abra un problema en Github o escriba a ldsfelipe [aroba] gmail.com ¡Gracias!</em></em></font></p>
 <div id="exceso-de-mortalidad-que-es-porque-medirlo-como-se-mide" class="section level1">
 <h1>‘Exceso de mortalidad’ Que es ? Porque medirlo ? Como se mide ?</h1>
 <p>Se refiere en epidemiología al número de muertes (todas causas confundidas) por encima o por debajo de lo esperado comparado con un periodo “normal”. Con la información disponible veremos como estimarla sobre distintos intervalos de tiempo, desde el comienzo de la pandemia.</p>
@@ -403,7 +404,7 @@ Esta en parte basado sobre el excelente material publicado de Roser et al.[1] <a
 </div>
 <div id="codificación-de-parroquias-para-comparación-inter-anual" class="section level1">
 <h1>Codificación de parroquias para comparación inter-anual</h1>
-<p>Comparando les bases de datos de 2020 con la referencia oficial de DPA (clasificador estadístico 2019) podemos unificar cadenas de texto original con las designación del registro civil (comparación aproximada de cadenas de texto). Para evitar los nombres duplicados, se realizan las comparaciones dentro de cada cantón (después de depuración de estas cadenas de texto).<br />
+<p>Comparando las bases de datos de 2020 con la referencia oficial de DPA (clasificador estadístico 2019) podemos unificar cadenas de texto original con las designación del registro civil (comparación aproximada de cadenas de texto). Para evitar los nombres duplicados, se realizan las comparaciones dentro de cada cantón (después de depuración de estas cadenas de texto).<br />
 Aún así, surgen problemas de empate cuando las parroquias contienen parroquias urbanas, y tienen una parroquia urbana con el mismo nombre que la parroquia “cabecera de cantón” (más a continuación).</p>
 <div id="clasificador-dpa-2019" class="section level2">
 <h2>Clasificador DPA 2019</h2>
@@ -485,8 +486,8 @@ Aún así, surgen problemas de empate cuando las parroquias contienen parroquias
 </tbody>
 </table>
 </div>
-<div id="defuncciones-2020" class="section level2">
-<h2>Defuncciones 2020</h2>
+<div id="defunciones-2020" class="section level2">
+<h2>Defunciones 2020</h2>
 <p>Las bases publicadas de defunción se unificaron siguiendo tres etapas:<br />
 - nombres de cantones (manual), - empate aproximado difuso de cadenas de texto por cantones, - unión de las bases para obtener el código DPA actualizado (2019)</p>
 <p>Las parroquias urbanas de una ciudad no cubren por completo la extensión de las PCCs y muertes ocurridas en “parroquias cabeceras cantonales” se encontrarían en estos espacios de geografía no cubiertas por las extensiones de parroquias urbanas.</p>
@@ -620,7 +621,7 @@ Aún así, surgen problemas de empate cuando las parroquias contienen parroquias
 </tr>
 </tbody>
 </table>
-<p>Se nota aquí que partes no urbanas de las PCCs faltan en algunos casos al realizar la unión entre defunción 2020 y datos históricos cuando los nombres son sinónimos por el problema mencionado anteriormente.</p>
+<p>Se nota aquí que partes no urbanas de las PCCs faltan en algunos casos al realizar la unión entre defunción 2020 y datos históricos cuando los nombres son sinónimos.</p>
 </div>
 <div id="información-geográfica" class="section level1">
 <h1>Información geográfica</h1>
